@@ -1,0 +1,172 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$header-font-family: "Barlow Condensed", sans-serif;
+$body-font-family: "Montserrat", sans-serif;
+
+//Color Combination
+$primary-color: #c01d2f;
+$white: #fef6ff;
+$black: #0c090d;
+
+body {
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-family;
+  font-weight: 500;
+}
+
+p {
+  font-family: $body-font-family;
+}
+
+a {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+$breakpoints: (
+  "sm": 600px,
+  // Small devices (portrait tablets and large phones, 600px and up)
+  "md": 992px,
+  // Medium devices (landscape tablets, 768px and up)
+  "lg": 1200px,
+  // Large devices (laptops/desktops, 992px and up)
+);
+
+@mixin sm {
+  @media (max-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: map-get($breakpoints, "lg")) {
+    @content;
+  }
+}
+
+//Font sizes
+p {
+  font-size: 17.5px;
+  line-height: 23px;
+}
+
+//Flex Properties mixing
+@mixin flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin space-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+@mixin space-around {
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+}
+
+@mixin justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+@mixin align-item-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@mixin flex-direction-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@mixin flex-direction-column-reverse {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+@mixin flex-direction-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+@mixin flex-direction-row-reverse {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+//Section warp
+.section-wrap {
+  max-width: 75em;
+  margin-inline: auto;
+  padding: 20px;
+}
+
+//flex container
+.flex-container {
+  @include flex;
+  @include justify-center;
+  @include flex-direction-column;
+  @include align-item-center;
+  @include lg {
+    @include flex-direction-row;
+  }
+}
+
+// Breakpoint-specific font sizes for paragraphs
+@include sm {
+  p {
+    font-size: 14px; // Example font size for small screens
+  }
+}
+
+@include md {
+  p {
+    font-size: 16px; // Example font size for medium screens
+  }
+}
+
+@include lg {
+  p {
+    font-size: 18px; // Example font size for large screens
+  }
+}
